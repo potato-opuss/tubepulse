@@ -28,7 +28,7 @@ npx cap sync android
 cd android && ./gradlew assembleDebug
 ```
 
-Requires Android SDK 24+ and JDK 17+. The APK is built by GitHub Actions on every push to
+Requires Android SDK 24+ and JDK 17. The APK is built by GitHub Actions on every push to
 `main` and published on the repository's Releases page as `TubePulse.apk`.
 
 ## Install on a phone
