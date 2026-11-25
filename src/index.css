@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root,
+.dark {
+  --tp-bg: 2 6 23;
+  --tp-card: 15 23 42;
+  --tp-line: 30 41 59;
+  --tp-ink: 226 232 240;
+  --tp-muted: 148 163 184;
+  --tp-primary: 99 102 241;
+  --tp-positive: 16 185 129;
+  --tp-negative: 244 63 94;
+  --tp-warning: 245 158 11;
+  color-scheme: dark;
+}
+
+.light {
+  --tp-bg: 248 250 252;
+  --tp-card: 255 255 255;
+  --tp-line: 226 232 240;
+  --tp-ink: 15 23 42;
+  --tp-muted: 100 116 139;
+  --tp-primary: 79 70 229;
+  --tp-positive: 5 150 105;
+  --tp-negative: 225 29 72;
+  --tp-warning: 217 119 6;
+  color-scheme: light;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior: none;
+  }
+
+  body {
+    @apply bg-bg font-sans text-ink antialiased;
+    min-height: 100dvh;
+    overscroll-behavior: none;
+  }
+
+  #root {
+    min-height: 100dvh;
+  }
+
+  ::selection {
+    @apply bg-primary/30;
+  }
+
+  /* Prevent iOS/Android input zoom and pull-to-refresh on the shell. */
+  input,
+  textarea,
+  select,
+  button {
+    font: inherit;
+  }
+}
+
+@layer utilities {
+  .safe-top {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .safe-x {
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
