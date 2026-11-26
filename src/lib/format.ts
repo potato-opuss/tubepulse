@@ -1,3 +1,14 @@
+export function formatNumber(value: number): string {
+  if (!Number.isFinite(value)) return '—';
+  return new Intl.NumberFormat('en-US').format(value);
+}
+
+/** Subscriber counts at 1,000+ are rounded by YouTube, so they get an "≈". */
+export function formatSubscribers(count: number | null, isRounded: boolean): string {
+  if (count === null) return 'Hidden';
+  return `${isRounded ? '≈' : ''}${formatCount(count)}`;
+}
+
 export function formatCount(value: number): string {
   if (!Number.isFinite(value)) return '—';
   return new Intl.NumberFormat('en-US', {

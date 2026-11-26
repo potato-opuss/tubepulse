@@ -35,6 +35,7 @@ export const SETTINGS_KEYS = {
   currency: 'tp.currency',
   usdTryRate: 'tp.rate.usdTry',
   youtubeApiKey: 'tp.youtube.apiKey',
+  youtubeChannel: 'tp.youtube.channel',
 } as const;
 
 export type SettingsKey = (typeof SETTINGS_KEYS)[keyof typeof SETTINGS_KEYS];
