@@ -1,6 +1,7 @@
 import { Eye, EyeOff, Loader2, PlugZap, ShieldCheck, Trash2 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { formatNumber } from '../../lib/format';
+import { notifyHistorySettingsChanged } from '../../lib/history/events';
 import { SETTINGS_KEYS, storage } from '../../lib/storage';
 import { resolveChannel } from '../../lib/youtube/channel';
 import { youtubeErrorMessage } from '../../lib/youtube/errors';
@@ -57,6 +58,11 @@ export function YouTubeCard() {
         storage.set(SETTINGS_KEYS.youtubeChannel, target),
       ]);
       const channel = await resolveChannel(key, target);
+      await Promise.all([
+        storage.set(SETTINGS_KEYS.youtubeChannelId, channel.id),
+        storage.set(SETTINGS_KEYS.youtubeChannelTitle, channel.title),
+      ]);
+      notifyHistorySettingsChanged();
       setResult(channel);
       setStatus(`Connected. “${channel.title}” came straight from the YouTube API.`);
     } catch (cause) {
@@ -69,6 +75,7 @@ export function YouTubeCard() {
 
   async function removeKey() {
     await storage.remove(SETTINGS_KEYS.youtubeApiKey);
+    notifyHistorySettingsChanged();
     setApiKey('');
     setResult(null);
     setError('');

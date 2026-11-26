@@ -1,6 +1,7 @@
 import { Save } from 'lucide-react';
 import { useState } from 'react';
 import { PageHeader } from '../components/layout/PageHeader';
+import { HistoryCard } from '../components/settings/HistoryCard';
 import { YouTubeCard } from '../components/settings/YouTubeCard';
 import {
   Banner,
@@ -100,6 +101,8 @@ export function SettingsPage() {
       </Card>
 
       <YouTubeCard />
+
+      <HistoryCard />
 
       <Banner tone="warning" title="Analytics API is not connected yet">
         Google sign-in is intentionally not implemented in this build. Revenue stays “Not enough
